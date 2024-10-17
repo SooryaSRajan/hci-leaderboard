@@ -1,22 +1,22 @@
 [
   {
-    "teamName": "",
-    "score": 0,
+    "teamName": "Soorya's Team",
+    "score": 123,
+    "teamMembers": ["User 1"]
+  },
+  {
+    "teamName": "Team 2",
+    "score": 4120,
     "teamMembers": []
   },
   {
-    "teamName": "",
-    "score": 0,
+    "teamName": "Team 3",
+    "score": 412,
     "teamMembers": []
   },
   {
-    "teamName": "",
-    "score": 0,
-    "teamMembers": []
-  },
-  {
-    "teamName": "",
-    "score": 0,
+    "teamName": "Team 4",
+    "score": 12,
     "teamMembers": []
   }
 ]
