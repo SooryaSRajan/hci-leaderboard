@@ -1,13 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ScoreboardTitle from "./scoreboard-title";
 import "./App.css"
-
+import data from './data.json'
 
 type Team = {
     teamName: string;
     score: number;
     teamMembers?: string[];
-    teamRank?: number;
 }
 
 const PrimaryScore: React.FC<Team> = ({ teamName, score, teamMembers }) => {
@@ -48,15 +47,22 @@ function App() {
     const [secondTeam, setSecondTeam] = useState<Team>()
     const [thirdTeam, setThirdTeam] = useState<Team>()
 
+    useEffect(() => {
+        setWinnerTeam(data[0])
+        setFirstTeam(data[1])
+        setSecondTeam(data[2])
+        setThirdTeam(data[3])
+    }, [])
+
     return (
         <div className='flex flex-col h-screen w-screen p-8'>
             <ScoreboardTitle/>
             <div
                 className='flex flex-1 flex-col border-l-[14px] border-r-[14px] border-b-[14px] border-score-grey mix-blend-screen bg-white p-4 gap-4'>
-                <PrimaryScore score={winnerTeam?.score ?? 0} teamName={winnerTeam?.teamName ?? ''} teamMembers={winnerTeam?.teamMembers ?? []}/>
-                <SecondaryScore score={firstTeam?.score ?? 0} teamName={firstTeam?.teamName ?? ''}/>
-                <SecondaryScore score={secondTeam?.score ?? 0} teamName={secondTeam?.teamName ?? ''}/>
-                <SecondaryScore score={thirdTeam?.score ?? 0} teamName={thirdTeam?.teamName ?? ''}/>
+                <PrimaryScore score={winnerTeam?.score ?? 0} teamName={winnerTeam?.teamName ?? 'Team A'} teamMembers={winnerTeam?.teamMembers ?? []}/>
+                <SecondaryScore score={firstTeam?.score ?? 0} teamName={firstTeam?.teamName ?? 'Team B'}/>
+                <SecondaryScore score={secondTeam?.score ?? 0} teamName={secondTeam?.teamName ?? 'Team C'}/>
+                <SecondaryScore score={thirdTeam?.score ?? 0} teamName={thirdTeam?.teamName ?? 'Team D'}/>
             </div>
         </div>
     );
