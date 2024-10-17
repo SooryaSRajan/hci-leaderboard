@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/hci-leaderboard/static/css/main.81c9c95b.css",
-    "main.js": "/hci-leaderboard/static/js/main.a8cda964.js",
+    "main.js": "/hci-leaderboard/static/js/main.db5f8cda.js",
     "index.html": "/hci-leaderboard/index.html",
     "main.81c9c95b.css.map": "/hci-leaderboard/static/css/main.81c9c95b.css.map",
-    "main.a8cda964.js.map": "/hci-leaderboard/static/js/main.a8cda964.js.map"
+    "main.db5f8cda.js.map": "/hci-leaderboard/static/js/main.db5f8cda.js.map"
   },
   "entrypoints": [
     "static/css/main.81c9c95b.css",
-    "static/js/main.a8cda964.js"
+    "static/js/main.db5f8cda.js"
   ]
 }
