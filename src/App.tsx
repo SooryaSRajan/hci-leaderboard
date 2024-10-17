@@ -1,26 +1,62 @@
-import React from 'react';
-import {initializeApp} from "firebase/app";
+import React, {useState} from 'react';
 import ScoreboardTitle from "./scoreboard-title";
-// https://firebase.google.com/docs/web/setup#available-libraries
+import "./App.css"
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBaHRAnCdFsFp2OuBT5WfaMzNB1oJrf1B8",
-    authDomain: "hci-leaderboard.firebaseapp.com",
-    projectId: "hci-leaderboard",
-    storageBucket: "hci-leaderboard.appspot.com",
-    messagingSenderId: "1065622709610",
-    appId: "1:1065622709610:web:dd181248668ac5c3d77113"
+
+type Team = {
+    teamName: string;
+    score: number;
+    teamMembers?: string[];
+    teamRank?: number;
+}
+
+const PrimaryScore: React.FC<Team> = ({ teamName, score, teamMembers }) => {
+    return (
+        <div className='bg-score-grey basis-1/3 flex flex-row justify-evenly items-center px-8 py-12'>
+            <div className='flex-1'>
+                <div className='text-white font-extrabold text-7xl'>
+                    {teamName}
+                </div>
+                <div className='text-white max-w-[80%] text-3xl font-extralight capitalize max'>
+                    {teamMembers?.map(name => name.toUpperCase())?.join(', ')}
+                </div>
+            </div>
+            <div className='text-8xl text-white font-extrabold rainbow-text'>
+                {score}
+            </div>
+        </div>
+    );
+};
+
+
+const SecondaryScore: React.FC<Team> = ({ teamName, score }) => {
+    return (
+        <div className='bg-[#DADADA] basis-1/5 border-2 border-score-grey flex flex-row justify-between items-center px-8'>
+            <div className='font-extrabold text-5xl text-score-grey'>
+                {teamName}
+            </div>
+            <div className='text-score-grey font-extrabold text-7xl'>
+                {score}
+            </div>
+        </div>
+    );
 };
 
 function App() {
-    const app = initializeApp(firebaseConfig);
+    const [winnerTeam, setWinnerTeam] = useState<Team>()
+    const [firstTeam, setFirstTeam] = useState<Team>()
+    const [secondTeam, setSecondTeam] = useState<Team>()
+    const [thirdTeam, setThirdTeam] = useState<Team>()
 
     return (
-        <div className='flex flex-col h-screen w-screen p-12'>
+        <div className='flex flex-col h-screen w-screen p-8'>
             <ScoreboardTitle/>
             <div
-                className='flex flex-1 border-l-[14px] border-r-[14px] border-b-[14px] border-score-grey mix-blend-screen bg-white'>
-                {/* Other content */}
+                className='flex flex-1 flex-col border-l-[14px] border-r-[14px] border-b-[14px] border-score-grey mix-blend-screen bg-white p-4 gap-4'>
+                <PrimaryScore score={winnerTeam?.score ?? 0} teamName={winnerTeam?.teamName ?? ''} teamMembers={winnerTeam?.teamMembers ?? []}/>
+                <SecondaryScore score={firstTeam?.score ?? 0} teamName={firstTeam?.teamName ?? ''}/>
+                <SecondaryScore score={secondTeam?.score ?? 0} teamName={secondTeam?.teamName ?? ''}/>
+                <SecondaryScore score={thirdTeam?.score ?? 0} teamName={thirdTeam?.teamName ?? ''}/>
             </div>
         </div>
     );
