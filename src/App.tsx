@@ -1,5 +1,6 @@
 import React from 'react';
-import { initializeApp } from "firebase/app";
+import {initializeApp} from "firebase/app";
+import ScoreboardTitle from "./scoreboard-title";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 const firebaseConfig = {
@@ -16,11 +17,10 @@ function App() {
 
     return (
         <div className='flex flex-col h-screen w-screen p-12'>
-            <h1 className='text-8xl text-score-grey font-extrabold'>
-                SCOREBOARD.
-            </h1>
-            <div className='flex flex-1 border-[14px] border-score-grey'>
-
+            <ScoreboardTitle/>
+            <div
+                className='flex flex-1 border-l-[14px] border-r-[14px] border-b-[14px] border-score-grey mix-blend-screen bg-white'>
+                {/* Other content */}
             </div>
         </div>
     );
