@@ -58,7 +58,7 @@ function App() {
         <div className='flex flex-col h-screen w-screen p-8'>
             <ScoreboardTitle/>
             <div
-                className='flex flex-1 flex-col border-l-[14px] border-r-[14px] border-b-[14px] border-score-grey mix-blend-screen bg-white p-4 gap-4'>
+                className='flex flex-1 flex-col border-l-[14px] border-r-[14px] border-b-[14px] border-black mix-blend-screen bg-white p-4 gap-4'>
                 <PrimaryScore score={winnerTeam?.score ?? 0} teamName={winnerTeam?.teamName ?? 'Team A'} teamMembers={winnerTeam?.teamMembers ?? []}/>
                 <SecondaryScore score={firstTeam?.score ?? 0} teamName={firstTeam?.teamName ?? 'Team B'}/>
                 <SecondaryScore score={secondTeam?.score ?? 0} teamName={secondTeam?.teamName ?? 'Team C'}/>
